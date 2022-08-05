@@ -1,7 +1,7 @@
 {
   "name": "wear-a-hat",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "",
   "main": "built/server.js",
   "author": "Microsoft Corporation",
