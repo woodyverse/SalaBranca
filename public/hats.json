@@ -2,13 +2,13 @@
     "none": {
         "displayName": "None"
     },
-    "hardhat": {
-        "displayName": "Cenario Azul",
-        "resourceName": "Cenario01_salabranca.glb",
+    "SalaPepsico": {
+        "displayName": "Loja Pepsico",
+        "resourceName": "SalaPepsico.gltf",
         "scale": {
-            "x": 1,
-            "y": 1,
-            "z": 1
+            "x": 8,
+            "y": 8,
+            "z": 8
         },
         "rotation": {
             "x": 0,
@@ -16,8 +16,8 @@
             "z": 0
         },
         "position": {
-            "x": 0,
-            "y": -6,
+            "x": -6,
+            "y": -7,
             "z": 0
         }
     },
