@@ -58,9 +58,8 @@ export default class WearAHat {
 	constructor(private context: MRE.Context) {
 		this.assets = new MRE.AssetContainer(context);
 		// Hook the context events we're interested in.
-		this.context.onStarted(() => this.started());		
+		this.context.onStarted(() => this.started());
 	}
-
 	/**
 	 * Called when a Hats application session starts up.
 	 */
@@ -139,6 +138,7 @@ export default class WearAHat {
 					this.wearHat(hatId, user.id);
 
 				});
+
 			// Create a label for the menu entry.
 			MRE.Actor.Create(this.context, {
 				actor: {
@@ -156,6 +156,7 @@ export default class WearAHat {
 			});
 			y = y + 0.5;
 		}
+
 		// Create a label for the menu title.
 		MRE.Actor.Create(this.context, {
 			actor: {
@@ -173,6 +174,7 @@ export default class WearAHat {
 			}
 		});
 	}
+
 	/**
 	 * Preload all hat resources. This makes instantiating them faster and more efficient.
 	 */
