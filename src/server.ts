@@ -7,9 +7,7 @@ process.on('unhandledRejection', reason => console.log('unhandledRejection', rea
 dotenv.config();
 function runApp() {
 	const server = new MRE.WebHost({
-		baseDir: resolvePath(__dirname, '../public'),
-		baseUrl: 'http://ec2-3-236-82-18.compute-1.amazonaws.com/',
-		port:3000
+		baseDir: resolvePath(__dirname, '../public')
 	});
 	server.adapter.onConnection(context => new App(context));
 }

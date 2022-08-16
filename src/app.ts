@@ -169,7 +169,7 @@ export default class WearAHat {
 					color: MRE.Color3.Yellow()
 				},
 				transform: {
-					local: { position: { x: 0.5, y: y + 0.25, z: 0 } }
+					local: { position: { x: 2, y: y + 0.25, z: 0 } }
 				}
 			}
 		});
