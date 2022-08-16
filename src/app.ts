@@ -48,6 +48,7 @@ export default class WearAHat {
 	private prefabs: { [key: string]: MRE.Prefab } = {};
 	// Container for instantiated hats.
 	private attachedHats = new Map<MRE.Guid, MRE.Actor>();
+	private sala: MRE.Actor = null;
 
 	/**
 	 * Constructs a new instance of this class.
@@ -138,7 +139,13 @@ export default class WearAHat {
 
 			// Set a click handler on the button.
 			button.setBehavior(MRE.ButtonBehavior)
-				.onClick(user => this.wearHat(hatId, user.id));
+				.onClick(user => {
+					if(this.sala !== null){
+						this.sala.destroy();
+					}					
+					this.wearHat(hatId, user.id);
+
+				});
 
 			// Create a label for the menu entry.
 			MRE.Actor.Create(this.context, {
@@ -206,7 +213,8 @@ export default class WearAHat {
 	 */
 	private wearHat(hatId: string, userId: MRE.Guid) {
 		// If the user is wearing a hat, destroy it.
-		this.removeHats(this.context.user(userId));
+		//this.removeHats(this.context.user(userId));
+		
 
 		const hatRecord = HatDatabase[hatId];
 
@@ -215,8 +223,7 @@ export default class WearAHat {
 			return;
 		}
 
-		// Create the hat model and attach it to the avatar's head.
-		this.attachedHats.set(userId, MRE.Actor.CreateFromPrefab(this.context, {
+		this.sala = MRE.Actor.CreateFromPrefab(this.context, {
 			prefab: this.prefabs[hatId],
 			actor: {
 				transform: {
@@ -230,7 +237,9 @@ export default class WearAHat {
 					}
 				}
 			}
-		}));
+		});
+		// Create the hat model and attach it to the avatar's head.
+		
 	}
 
 	private removeHats(user: MRE.User) {
