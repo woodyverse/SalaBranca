@@ -58,8 +58,7 @@ export default class WearAHat {
 	constructor(private context: MRE.Context) {
 		this.assets = new MRE.AssetContainer(context);
 		// Hook the context events we're interested in.
-		this.context.onStarted(() => this.started());
-		this.context.onUserLeft(user => this.userLeft(user));
+		this.context.onStarted(() => this.started());		
 	}
 
 	/**
@@ -105,12 +104,6 @@ export default class WearAHat {
 	 * Called when a user leaves the application (probably left the Altspace world where this app is running).
 	 * @param user The user that left the building.
 	 */
-	private userLeft(user: MRE.User) {
-		// If the user was wearing a hat, destroy it. Otherwise it would be
-		// orphaned in the world.
-		this.removeHats(user);
-	}
-
 	/**
 	 * Show a menu of hat selections.
 	 */
@@ -146,7 +139,6 @@ export default class WearAHat {
 					this.wearHat(hatId, user.id);
 
 				});
-
 			// Create a label for the menu entry.
 			MRE.Actor.Create(this.context, {
 				actor: {
@@ -164,7 +156,6 @@ export default class WearAHat {
 			});
 			y = y + 0.5;
 		}
-
 		// Create a label for the menu title.
 		MRE.Actor.Create(this.context, {
 			actor: {
@@ -182,7 +173,6 @@ export default class WearAHat {
 			}
 		});
 	}
-
 	/**
 	 * Preload all hat resources. This makes instantiating them faster and more efficient.
 	 */
@@ -242,8 +232,4 @@ export default class WearAHat {
 		
 	}
 
-	private removeHats(user: MRE.User) {
-		if (this.attachedHats.has(user.id)) { this.attachedHats.get(user.id).destroy(); }
-		this.attachedHats.delete(user.id);
-	}
 }
